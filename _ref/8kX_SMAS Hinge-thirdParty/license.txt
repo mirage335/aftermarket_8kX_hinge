@@ -1,0 +1,43 @@
+https://www.thingiverse.com/thing:4590303/files
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+https://github.com/pavel-ruban/Pimax
+https://cad.onshape.com/documents/fc37eacb99e7b11e2a322105/w/a07aab2718f48f7bca448c96/e/941ae8a6d26472d6f4b638b7
+...
+Original third-party files in this directory were obtained from the above sources.
+
+Due to the use of 'Onshape', which is software-as-a-service, the link to the 'oshape.com' site *is* the original source code. Some files under the 'mod' directory - which may be in 'STEP' format, were exported, both to serve as backups copies of the most important geometry data, as well as parts for possible integration with further CAD assemblies.
+
+...
+File and directory names labeled with 'orig' in their names, listed above, or under the 'orig' subdirectory, retain their original licenses, as stated below, unless public domain or fair use.
+
+...
+File and directory names labeled with 'mod' in their names, listed above, or under the 'mod' subdirectory, are modified versions of the original files, and also retain the original license, as stated below, unless public domain or fair use.
+
+...
+In the absense of any license explictly stated here or any prior license, files under this directory are then intended to be copyrighted by mirage335 under GPLv2 license.
+
+-
+Copyright (C) 2020  mirage335
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software Foundation,
+Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+
+All files in this folder and subfolders, unless explicitly stated otherwise in this file or copyrighted by other authors, are copyrighted by mirage335 as described above.
+-
+
+_GPLv2 License_
+Relevant files as declared above, obtained under a 'GPLv2 license'. They, and all modifications to them, retain that license, which is provided with them, unless a different license is noted in their file.
+
+
+

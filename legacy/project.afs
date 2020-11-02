@@ -1,0 +1,371 @@
+#!/usr/bin/env bash
+
+# /dev/shm/uk4u/rjb3f7ov
+
+export abstractfs_name="rjb3f7ov"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if [[ "$1" != "--noexec" ]]
+then
+	
+#####
+_getScriptAbsoluteLocation () 
+{ 
+    if [[ "$0" == "-"* ]]; then
+        return 1;
+    fi;
+    local absoluteLocation;
+    if [[ ( -e $PWD\/$0 ) && ( $0 != "" ) ]] && [[ "$0" != "/"* ]]; then
+        absoluteLocation="$PWD"\/"$0";
+        absoluteLocation=$(_realpath_L_s "$absoluteLocation");
+    else
+        absoluteLocation=$(_realpath_L "$0");
+    fi;
+    if [[ -h "$absoluteLocation" ]]; then
+        absoluteLocation=$(readlink -f "$absoluteLocation");
+        absoluteLocation=$(_realpath_L "$absoluteLocation");
+    fi;
+    echo $absoluteLocation
+}
+_getScriptAbsoluteFolder () 
+{ 
+    if [[ "$0" == "-"* ]]; then
+        return 1;
+    fi;
+    dirname "$(_getScriptAbsoluteLocation)"
+}
+_checkBaseDirRemote_common_localOnly () 
+{ 
+    [[ "$1" == "." ]] && return 0;
+    [[ "$1" == "./" ]] && return 0;
+    [[ "$1" == ".." ]] && return 0;
+    [[ "$1" == "../" ]] && return 0;
+    [[ "$1" == "/" ]] && return 0;
+    return 1
+}
+_checkBaseDirRemote_common_remoteOnly () 
+{ 
+    [[ "$1" == "/bin"* ]] && return 0;
+    [[ "$1" == "/lib"* ]] && return 0;
+    [[ "$1" == "/lib64"* ]] && return 0;
+    [[ "$1" == "/opt"* ]] && return 0;
+    [[ "$1" == "/usr"* ]] && return 0;
+    [[ "$1" == "/bin/bash" ]] && return 0;
+    return 1
+}
+_checkBaseDirRemote () 
+{ 
+    _checkBaseDirRemote_common_localOnly "$1" && return 0;
+    _checkBaseDirRemote_common_remoteOnly "$1" && return 1;
+    _checkBaseDirRemote_app_localOnly "$1" && return 0;
+    _checkBaseDirRemote_app_remoteOnly "$1" && return 1;
+    [[ "$checkBaseDirRemote" == "" ]] && checkBaseDirRemote="false";
+    "$checkBaseDirRemote" "$1" || return 1;
+    return 0
+}
+_compat_realpath () 
+{ 
+    [[ -e "$compat_realpath_bin" ]] && [[ "$compat_realpath_bin" != "" ]] && return 0;
+    export compat_realpath_bin=/opt/local/libexec/gnubin/realpath;
+    [[ -e "$compat_realpath_bin" ]] && [[ "$compat_realpath_bin" != "" ]] && return 0;
+    export compat_realpath_bin=$(type -p realpath);
+    [[ -e "$compat_realpath_bin" ]] && [[ "$compat_realpath_bin" != "" ]] && return 0;
+    export compat_realpath_bin=/bin/realpath;
+    [[ -e "$compat_realpath_bin" ]] && [[ "$compat_realpath_bin" != "" ]] && return 0;
+    export compat_realpath_bin=/usr/bin/realpath;
+    [[ -e "$compat_realpath_bin" ]] && [[ "$compat_realpath_bin" != "" ]] && return 0;
+    export compat_realpath_bin="";
+    return 1
+}
+_compat_realpath_run () 
+{ 
+    ! _compat_realpath && return 1;
+    "$compat_realpath_bin" "$@"
+}
+_getAbsoluteLocation () 
+{ 
+    if [[ "$1" == "-"* ]]; then
+        return 1;
+    fi;
+    if [[ "$1" == "" ]]; then
+        echo;
+        return;
+    fi;
+    local absoluteLocation;
+    if [[ ( -e $PWD\/$1 ) && ( $1 != "" ) ]] && [[ "$1" != "/"* ]]; then
+        absoluteLocation="$PWD"\/"$1";
+        absoluteLocation=$(_realpath_L_s "$absoluteLocation");
+    else
+        absoluteLocation=$(_realpath_L "$1");
+    fi;
+    echo "$absoluteLocation"
+}
+_realpath_L_s () 
+{ 
+    if ! _compat_realpath_run -L . > /dev/null 2>&1; then
+        readlink -f "$@";
+        return;
+    fi;
+    realpath -L -s "$@"
+}
+_getAbsoluteFolder () 
+{ 
+    if [[ "$1" == "-"* ]]; then
+        return 1;
+    fi;
+    local absoluteLocation=$(_getAbsoluteLocation "$1");
+    dirname "$absoluteLocation"
+}
+_findDir () 
+{ 
+    local dirIn=$(_getAbsoluteLocation "$1");
+    dirInLogical=$(_realpath_L_s "$dirIn");
+    if [[ -d "$dirInLogical" ]]; then
+        echo "$dirInLogical";
+        return;
+    fi;
+    echo $(_getAbsoluteFolder "$dirInLogical");
+    return
+}
+_safeEcho_newline () 
+{ 
+    _safeEcho "$@";
+    printf '\n'
+}
+_searchBaseDir () 
+{ 
+    local baseDir;
+    local newDir;
+    baseDir="";
+    local processedArgs;
+    local currentArg;
+    local currentResult;
+    for currentArg in "$@";
+    do
+        if _checkBaseDirRemote "$currentArg"; then
+            continue;
+        fi;
+        currentResult="$currentArg";
+        processedArgs+=("$currentResult");
+    done;
+    for currentArg in "${processedArgs[@]}";
+    do
+        if [[ ! -e "$currentArg" ]]; then
+            continue;
+        fi;
+        if [[ "$baseDir" == "" ]]; then
+            baseDir=$(_findDir "$currentArg");
+        fi;
+        for subArg in "${processedArgs[@]}";
+        do
+            if [[ ! -e "$subArg" ]]; then
+                continue;
+            fi;
+            newDir=$(_findDir "$subArg");
+            while [[ "${newDir%/}/" != "${baseDir%/}/"* ]]; do
+                baseDir=$(_findDir "$baseDir"/..);
+                if [[ "$baseDir" == "/" ]]; then
+                    break;
+                fi;
+            done;
+        done;
+    done;
+    _safeEcho_newline "$baseDir"
+}
+_checkBaseDirRemote () 
+{ 
+    _checkBaseDirRemote_common_localOnly "$1" && return 0;
+    _checkBaseDirRemote_common_remoteOnly "$1" && return 1;
+    _checkBaseDirRemote_app_localOnly "$1" && return 0;
+    _checkBaseDirRemote_app_remoteOnly "$1" && return 1;
+    [[ "$checkBaseDirRemote" == "" ]] && checkBaseDirRemote="false";
+    "$checkBaseDirRemote" "$1" || return 1;
+    return 0
+}
+_safeEcho () 
+{ 
+    printf '%s' "$1";
+    shift;
+    [[ "$@" == "" ]] && return 0;
+    local currentArg;
+    for currentArg in "$@";
+    do
+        printf '%s' " ";
+        printf '%s' "$currentArg";
+    done;
+    return 0
+}
+_localDir () 
+{ 
+    if _checkBaseDirRemote "$1"; then
+        _safeEcho_newline "$1";
+        return;
+    fi;
+    if [[ ! -e "$2" ]]; then
+        _safeEcho_newline "$1";
+        return;
+    fi;
+    if [[ ! -e "$1" ]] || ! _pathPartOf "$1" "$2"; then
+        _safeEcho_newline "$1";
+        return;
+    fi;
+    [[ "$3" != "" ]] && _safeEcho "$3" && [[ "$3" != "/" ]] && _safeEcho "/";
+    realpath -L -s --relative-to="$2" "$1"
+}
+_slashBackToForward () 
+{ 
+    local translatedFileParam;
+    translatedFileParam=${1//\//\\};
+    _safeEcho_newline "$translatedFileParam"
+}
+_checkBaseDirRemote_app_localOnly () 
+{ 
+    false
+}
+_checkBaseDirRemote_app_remoteOnly () 
+{ 
+    [[ "$1" == "/bin/bash" ]] && return 0
+}
+_pathPartOf () 
+{ 
+    local testParameter;
+    testParameter="IAUjqyPF2s3gqjC0t1";
+    local baseParameter;
+    baseParameter="JQRBqIoOVoDJuzc7k9";
+    [[ -e "$1" ]] && testParameter=$(_getAbsoluteLocation "$1");
+    [[ -e "$2" ]] && baseParameter=$(_getAbsoluteLocation "$2");
+    [[ "$testParameter" != "$baseParameter"* ]] && return 1;
+    return 0
+}
+_realpath_L () 
+{ 
+    if ! _compat_realpath_run -L . > /dev/null 2>&1; then
+        readlink -f "$@";
+        return;
+    fi;
+    realpath -L "$@"
+}
+_virtUser () 
+{ 
+    export sharedHostProjectDir="$sharedHostProjectDir";
+    export processedArgs;
+    [[ "$virtUserPWD" == "" ]] && export virtUserPWD="$outerPWD";
+    if [[ -e /tmp/.X11-unix ]] && [[ "$DISPLAY" != "" ]] && type xauth > /dev/null 2>&1; then
+        export XSOCK=/tmp/.X11-unix;
+        export XAUTH=/tmp/.virtuser.xauth."$sessionid";
+        touch $XAUTH;
+        xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -;
+    fi;
+    if [[ "$sharedHostProjectDir" == "" ]]; then
+        sharedHostProjectDir=$(_searchBaseDir "$@" "$virtUserPWD");
+        mkdir -p "$sharedHostProjectDir";
+    fi;
+    export localPWD=$(_localDir "$virtUserPWD" "$sharedHostProjectDir" "$sharedGuestProjectDir");
+    export virtUserPWD=;
+    local enableMSWtranslation;
+    enableMSWtranslation=false;
+    _safeEcho_newline "$sharedGuestProjectDir" | grep '^[[:alpha:]]\:\|^[[:alnum:]][[:alnum:]]\:\|^[[:alnum:]][[:alnum:]][[:alnum:]]\:' > /dev/null 2>&1 && enableMSWtranslation=true;
+    local currentArg;
+    local currentResult;
+    processedArgs=();
+    for currentArg in "$@";
+    do
+        currentResult=$(_localDir "$currentArg" "$sharedHostProjectDir" "$sharedGuestProjectDir");
+        [[ "$enableMSWtranslation" == "true" ]] && currentResult=$(_slashBackToForward "$currentResult");
+        processedArgs+=("$currentResult");
+    done
+}
+_x11_clipboard_sendText () 
+{ 
+    xclip -selection clipboard
+}
+_removeFilePrefix () 
+{ 
+    local translatedFileParam;
+    translatedFileParam=${1/#file:\/\/};
+    _safeEcho_newline "$translatedFileParam"
+}
+	
+#####
+	
+	
+#####
+	
+	cd "$(_getScriptAbsoluteFolder)"
+	
+	
+	export standalone_abstractfs="/dev/shm/uk4u"/"rjb3f7ov"
+	export standalone_abstractfs_base=$(_getScriptAbsoluteFolder)
+	
+	
+	export sharedHostProjectDir="$standalone_abstractfs_base"
+	export sharedGuestProjectDir="$standalone_abstractfs"
+	
+	current_x11_clipboard=$(xclip -out -selection clipboard)
+	current_x11_clipboard=$(_removeFilePrefix "$current_x11_clipboard")
+	
+	# Replace ./../.. ... /../home/user/ ... with /home/"$USER"/ .
+	#current_x11_clipboard=${current_x11_clipboard/*\/home\//\/home\/}
+	#current_x11_clipboard=$(_safeEcho "$current_x11_clipboard" | sed 's/^\([\.\/]\)*home\//\/home\//')
+	#current_x11_clipboard=$(_safeEcho "$current_x11_clipboard" | sed 's/^\([\.\/]\)*home\/'"commonadmin"'/\/home\/'"commonadmin"'/')
+	#current_x11_clipboard=$(_safeEcho "$current_x11_clipboard" | sed 's/^\([\.\/]\)*home\/[a-zA-Z0-9_\-]*/\/home\/'"commonadmin"'/')
+	current_x11_clipboard=$(_safeEcho "$current_x11_clipboard" | sed 's/^\([\.\/]\)*home\/[^/]*/\/home\/'"commonadmin"'/')
+	
+	#if [[ -e "${processedArgs[0]}" ]]
+	if [[ -e "$current_x11_clipboard" ]]
+	then
+		_virtUser "$current_x11_clipboard"
+		_safeEcho "${processedArgs[0]}" | _x11_clipboard_sendText
+	fi
+fi
+
