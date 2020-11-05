@@ -23,6 +23,8 @@ Take care to ensure symmetric alignment - both left and right hinges should be a
 
 Consider providing end-users an entire copy of this repository with all submodules, in addition to PDF documents. Physical USB flash devices may be suitable for the repository, printed hardcopy may be suitable for the PDF documents.
 
+All manufactured copies of this design should include at least a link to the source repository, regardless of legal requirements to do so.
+
 
 # Design
 
@@ -33,6 +35,11 @@ https://www.thingiverse.com/thing:4590303/files
 http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 https://github.com/pavel-ruban/Pimax
 https://cad.onshape.com/documents/fc37eacb99e7b11e2a322105/w/a07aab2718f48f7bca448c96/e/941ae8a6d26472d6f4b638b7
+
+
+User 'mirage335' is expected to have needed the MAS strap to lower to a somewhat further angle than most users - apporximately 159deg which may have been slightly lower due to 3D printing tolerance at the time. Consequently, angles useful to others are expected to fall between 157deg-161deg with possible outliers at 155deg (provided by Pimax plastic hinges) or 163deg (expected to be rarely desirable).
+
+Emboss font used is from '/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf' (typical installed directory/file) , or similar, as specified in CAD model.
 
 
 # Redistribution and Preservation
@@ -47,6 +54,13 @@ Entire 'recursive' clones of this repository with all submodules may be appropri
 
 
 # Reference
+
+https://wiki.freecadweb.org/A2plus_Workbench
+https://github.com/mirage335/freecad-assembly2
+
+
+
+https://apps.dtic.mil/dtic/tr/fulltext/u2/a268661.pdf
 
 
 # Directory Specification
@@ -172,6 +186,45 @@ to
 
 ```
 
+
+# Manufacturing
+
+Recommended 3D printer 'slicer' settings...
+
+* No 'Brim'.
+* Solid infill threshold area >70mm^2 .
+* >45% Fill, 'Rectilinear'
+* <0.3mm Layer Height
+* <0.5mm Extrusion Width
+* 2 'vertical shells', 2 'horizontal shells'
+* disable 'external perimeters first'
+
+
+* >50% Infill/perimeters overlap
+
+
+* <0.25mm or 0mm XY Size Compensation
+* 0mm (full) 'Resolution'
+
+
+* 3mm extruder
+* 240mm/s travel speed
+* 85mm/s print speed
+* 65mm/s 'gap fill'
+
+
+* disable 'complete individual objects'
+
+
+Occasionally one overhanging perimeter may sag down from the hinge inner surface. Such a perimeter should be removed with tweezers, more than one such sagging perimeter line may be cause to consider the print a failure.
+
+The pillar post and pillar base should easily fit together, and should not be tightened until held in place by screw and/or glue.
+
+A vise may be used during screw tightening to ensure correct alignment. Screw should be tight enough to prevent rotation of the pillar post - this tightening will also ensure the pillar base does not separate from the underlying bracket when under pressure.
+
+An M2.5 or M2 screw, length 12mm, 10mm, or 8mm, should be used to join pillar post and pillar base. Phillips head is specifically strongly discouraged.
+
+Flexible material - such as NinjaFlex - may be able to maintain desired pressure towards the top of the head - with a wider variety of geometries and pressures. This has not been tested.
 
 
 # Third-Party Copyright Notices
