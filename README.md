@@ -41,7 +41,7 @@ User 'mirage335' is expected to have needed the MAS strap to lower to a somewhat
 
 Emboss font used is from '/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf' (typical installed directory/file) , or similar, as specified in CAD model.
 
-Angled (not flat) brackets may reduce screw length (from 12mm to 10mm or 8mm), reduce weight, improve adaptability (if flexible material), reduce plastic/material, reduce print time, and possibly add a small gap to improve compressibility under assembly screw pressure. Flat brackets may improve adjustability, improve repairability, increase layer adhesion, and reduce vibration during manufacturing (reducing wear on 3D printers). Beware estimates produced by slicing programs may underestimate print time, even after warmup.
+Angled (not flat) brackets may reduce screw length (from 12mm to 10mm or 8mm), reduce weight, improve adaptability (if flexible material), reduce plastic/material, reduce print time, and possibly add a small gap to improve compressibility under assembly screw pressure. Flat brackets may improve adjustability, improve repairability (better surfaces for gluing), increase layer adhesion, and reduce vibration during manufacturing (reducing wear on 3D printers). Beware estimates produced by slicing programs may underestimate print time, even after warmup.
 Flat brackets, horizontal alignment, platter 10x, no pillar base, no pillar post...
 * 90% Infill - 138% print time, 162% plastic
 * 40% Infill - 116% print time, 135% plastic
