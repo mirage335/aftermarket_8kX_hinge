@@ -3,7 +3,7 @@ See the end of the file for license conditions.
 See license.txt for aftermarket_8kX_hinge license conditions.
 
 
-Aftermarket hinges to attach Pimax Vision 8kX to Modular Audio Strap, at angles different from those supplied by the original manufacturer Pimax. As a '3D printable' aftermarket modification, including derived third-party work under apparent GNU GPL v2 license, these alterantive hinges are an independent offering.
+Aftermarket hinges to attach Pimax Vision 8kX to Modular Audio Strap, at angles different from those supplied by the original manufacturer Pimax. As a '3D printable' aftermarket modification, including derived third-party work under apparent GNU GPL v2 license, these alternative hinges are an independent offering.
 
 Still, "mirage335" wishes to extend significant gratitude to Pimax, as well as the community established around Pimax, for the introduction of useful VR technology, that such aftermarket products are intended to further support.
 
@@ -41,6 +41,15 @@ User 'mirage335' is expected to have needed the MAS strap to lower to a somewhat
 
 Emboss font used is from '/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf' (typical installed directory/file) , or similar, as specified in CAD model.
 
+Angled (not flat) brackets may reduce screw length, reduce weight, improve adaptability (if flexible material), reduce plastic/material, reduce print time, and possibly add a small gap to improve compressibility under assembly screw pressure. Flat brackets may improve adjustability, improve repairability, increase layer adhesion, and reduce vibration during manufacturing (reducing wear on 3D printers).
+Flat brackets, horizontal alignment, platter 10x, no pillar base, no pillar post...
+* 90% Infill - 138% print time, 162% plastic
+* 40% Infill - 116% print time, 135% plastic
+
+Flat brackets, vertical alignment, platter 10x, no pillar base, no pillar post...
+* 90% Infill - 153% print time, 175% plastic
+* 40% Infill - 129% print time, 147% plastic
+
 
 # Redistribution and Preservation
 
@@ -61,6 +70,13 @@ https://github.com/mirage335/freecad-assembly2
 
 
 https://apps.dtic.mil/dtic/tr/fulltext/u2/a268661.pdf
+
+
+https://www.fastenal.com/product/fasteners/screws/machine-screws/600059?categoryId=600059&level=3&aggregationSection=true&Dia%2FThread+Size=M2-0.4&Dia%2FThread+Size=M2.5-0.45&Dia%2FThread+Size=M2&Dia%2FThread+Size=M2.5&Length=12mm&showAll=Dia%2FThread+Size&showAll=Length&selectedAggregation=Length
+
+https://www.amazon.com/s?k=m2x40mm&i=tools&ref=nb_sb_noss
+
+https://www.pocketscrewdrivers.com/Logo_Pocket_Screwdrivers_s/3.htm
 
 
 # Directory Specification
@@ -225,6 +241,14 @@ A vise may be used during screw tightening to ensure correct alignment. Screw sh
 An M2.5 or M2 screw, length 12mm, 10mm, or 8mm, should be used to join pillar post and pillar base. Phillips head is specifically strongly discouraged.
 
 Flexible material - such as NinjaFlex - may be able to maintain desired pressure towards the top of the head - with a wider variety of geometries and pressures. This has not been tested.
+
+
+# Hinge Pins
+
+Apparently these are 'headless shoulder bolts' or 'threaded link band screw' - perhaps M1/M2/M2.5 diameter/thread , 30mm shoulder length , 35mm total length . Despite some effort and progress in determining possible sources for these visibly standards resembling screws, at least their length seems to be unusual.
+
+Heat shrink tubing around more typical M1/M2/M2.5x40mm screws may be a practical workaround.
+
 
 
 # Third-Party Copyright Notices
