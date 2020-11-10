@@ -37,7 +37,7 @@ https://github.com/pavel-ruban/Pimax
 https://cad.onshape.com/documents/fc37eacb99e7b11e2a322105/w/a07aab2718f48f7bca448c96/e/941ae8a6d26472d6f4b638b7
 
 
-User 'mirage335' is expected to have needed the MAS strap to lower to a somewhat further angle than most users - apporximately 159deg which may have been slightly lower due to 3D printing tolerance at the time. Consequently, angles useful to others are expected to fall between 157deg-161deg with possible outliers at 155deg (provided by Pimax plastic hinges) or 163deg (expected to be rarely desirable).
+User 'mirage335' is expected to have needed the MAS strap to lower to a somewhat further angle than most users - apporximately 159deg which may have been slightly lower due to 3D printing tolerance at the time. Consequently, angles useful to others are expected to fall between 157deg-161deg with possible outliers at 155deg (provided by Pimax plastic hinges) or 163deg (expected to be rarely desirable). Further experiments have shown these initial values may be 2deg less due to manufacturing tolerances of the original hinges that were printed vertically with detachable support.
 
 Emboss font used is from '/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf' (typical installed directory/file) , or similar, as specified in CAD model.
 
@@ -73,6 +73,11 @@ https://apps.dtic.mil/dtic/tr/fulltext/u2/a268661.pdf
 
 
 https://www.fastenal.com/product/fasteners/screws/machine-screws/600059?categoryId=600059&level=3&aggregationSection=true&Dia%2FThread+Size=M2-0.4&Dia%2FThread+Size=M2.5-0.45&Dia%2FThread+Size=M2&Dia%2FThread+Size=M2.5&Length=12mm&showAll=Dia%2FThread+Size&showAll=Length&selectedAggregation=Length
+https://www.fastenal.com/product/fasteners/screws/machine-screws/600059?categoryId=600059&level=3&isExpanded=true&Length=8mm&Length=12mm&Length=10mm&Dia/Thread%20Size=M2-0.4&Dia/Thread%20Size=M2.5-0.45&Dia/Thread%20Size=M2&Dia/Thread%20Size=M2.5&showAll=Dia/Thread%20Size&showAll=Length&productFamilyId=21371
+
+https://community.openmr.ai/t/hinge-screws-standard-part-replacements/32489
+https://groups.google.com/a/hacdc.org/g/blabber/c/DWuHq5YGobc
+
 
 https://www.amazon.com/s?k=m2x40mm&i=tools&ref=nb_sb_noss
 
@@ -238,7 +243,7 @@ The pillar post and pillar base should easily fit together, and should not be ti
 
 A vise may be used during screw tightening to ensure correct alignment. Screw should be tight enough to prevent rotation of the pillar post - this tightening will also ensure the pillar base does not separate from the underlying bracket when under pressure.
 
-An M2.5 or M2 screw, length 12mm, 10mm, or 8mm, should be used to join pillar post and pillar base. Phillips head is specifically strongly discouraged.
+An M2.5 or M2 screw, length 12mm, 10mm, or 8mm, should be used to join pillar post and pillar base. Phillips head is specifically strongly discouraged. M2x8mm has been proven workable for the angled hinges. M2x10mm has been proven workable for the flat hinges.
 
 Flexible material - such as NinjaFlex - may be able to maintain desired pressure towards the top of the head - with a wider variety of geometries and pressures. This has not been tested.
 
